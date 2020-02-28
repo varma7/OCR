@@ -5,8 +5,6 @@ from flask import Flask, render_template, request
 from ocr_core import ocr_core
 
 
-
-
 UPLOAD_FOLDER = '/static/uploads/'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
@@ -18,13 +16,8 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route('/')
+@app.route('/',methods=['GET', 'POST'])
 def home_page():
-    return render_template('index.html')
-
-
-@app.route('/upload', methods=['GET', 'POST'])
-def upload_page():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:

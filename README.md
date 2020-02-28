@@ -35,6 +35,7 @@ $ pipenv install && pipenv shell
 4. Install the requirements
 ```
 $ pip install -r requirements.txt
+$ pip install pywin32 pypiwin32 pyttsx3  ||  Linux $ sudo pip install pyttsx3
 ```
 
 4. Run OCR server

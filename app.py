@@ -1,4 +1,6 @@
 import os
+import sys
+import pyttsx3
 
 from flask import Flask, render_template, request
 
@@ -33,12 +35,18 @@ def home_page():
 
             # call the OCR function on it
             extracted_text = ocr_core(file)
-
+            engine = pyttsx3.init()
+            engine.say(extracted_text)
+            engine.runAndWait()
             # extract the text and display it
             return render_template('upload.html',
                                    msg='Successfully processed',
                                    extracted_text=extracted_text,
                                    img_src=UPLOAD_FOLDER + file.filename)
+            
+            
+            
+            
     elif request.method == 'GET':
         return render_template('upload.html')
 
